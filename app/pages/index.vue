@@ -7,9 +7,9 @@
     <v-row class="tw:flex tw:bg-blue-500 tw:hover:bg-blue-100">
       <v-col cols="12" class="text-center">
         <h1 class="text-3xl font-weight-bold mb-8 primary--text">
-          Pratiko ERP Dashboard
+          Pratiko ERP Dashboard V1
         </h1>
-        
+
         <!-- İstatistik Kartları -->
         <v-row justify="center" class="mb-8">
           <!-- Toplam Müşteri Kartı -->
