@@ -13,17 +13,23 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxt/scripts'
   ],
+  
   css: [
+     // Vuetify sonra yüklenmeli
     'vuetify/styles',
-    '~/assets/css/main.css'
+    // Tailwind CSS önce yüklenmeli
+    '~/assets/css/main.css',
+   
   ],
+  
   build: {
     transpile: ['vuetify']
   },
+  
   vite: {
     plugins: [
       tailwindcss(),
       vuetify({ autoImport: true })
-    ]
-  },
+    ],
+  }
 })

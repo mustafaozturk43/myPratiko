@@ -4,7 +4,7 @@
     <v-btn icon size="large" class="fab-button" elevation="8" color="error">
       <v-icon size="32">mdi-plus</v-icon>
     </v-btn>
-    <v-row class="tw:flex tw:bg-blue-500 tw:hover:bg-blue-100">
+    <v-row class="tw:flex">
       <v-col cols="12" class="text-center">
         <h1 class="text-3xl font-weight-bold mb-8 primary--text">
           Pratiko ERP Dashboard V1
