@@ -11,11 +11,11 @@
           <v-sheet
             :elevation="5"
             border
-            color="success"
+            color="red-600"
             rounded
             class="pa-6"
           >
-            <slot />
+
           </v-sheet>
         </v-container>
       </v-main>

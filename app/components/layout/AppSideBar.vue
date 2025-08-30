@@ -1,13 +1,14 @@
 <template>
+  <div class="tw:bg-orange-200 tw:bg-orange-900">deneme
+  </div>
+
   <v-navigation-drawer
     v-model="drawer"
     :permanent="$vuetify.display.mdAndUp"
     :temporary="$vuetify.display.smAndDown"
-    color="surface-variant"
     floating
-    class="tw:border-none tw:shadow-2xl tw:rounded-xl tw:bg-gradient-to-b tw:from-indigo-900 tw:to-indigo-800"
+    class="bg-[#001e42] text-white w-56 shadow-xl"
     width="80"
-    :style="sidebarStyles"
   >
     <v-list
       v-model="selectedItem"
@@ -19,22 +20,33 @@
     >
       <!-- Logo -->
       <v-list-item class="tw:mb-4">
-        <v-icon size="x-large" color="white" class="tw:mx-auto">
+        <v-icon
+          size="x-large"
+          color="white"
+          class="tw:mx-auto"
+        >
           mdi-alpha-p-box
         </v-icon>
       </v-list-item>
-      
+
       <!-- Navigation Items -->
       <v-list-item
         v-for="item in navigationItems"
         :key="item.value"
-        :value="item.value" 
+        :value="item.value"
         class="tw:flex tw:items-center tw:justify-center tw:my-2 tw:w-15 tw:h-15 tw:rounded-xl tw:text-indigo-200 tw:transition-all tw:duration-300"
         active-class="nav-item-active"
         @click="handleNavigation(item.value)"
       >
-        <v-icon :icon="item.icon" size="x-large" class="tw:mx-auto" />
-        <v-tooltip activator="parent" location="end">
+        <v-icon
+          :icon="item.icon"
+          size="x-large"
+          class="tw:mx-auto"
+        />
+        <v-tooltip
+          activator="parent"
+          location="end"
+        >
           {{ item.title }}
         </v-tooltip>
       </v-list-item>
@@ -42,13 +54,19 @@
       <v-spacer />
 
       <!-- Logout Item -->
-      <v-list-item 
-        class="tw:bg-red-900 tw:flex tw:items-center tw:justify-center tw:mt-2 tw:w-15 tw:h-15 tw:rounded-xl tw:text-indigo-200 tw:transition-all tw:duration-300" 
+      <v-list-item
+        class="tw:bg-red-900 tw:flex tw:items-center tw:justify-center tw:mt-2 tw:w-15 tw:h-15 tw:rounded-xl tw:text-indigo-200 tw:transition-all tw:duration-300"
         value="logout"
         @click="handleLogout"
       >
-        <v-icon icon="mdi-logout" size="large" />
-        <v-tooltip activator="parent" location="end">
+        <v-icon
+          icon="mdi-logout"
+          size="large"
+        />
+        <v-tooltip
+          activator="parent"
+          location="end"
+        >
           Çıkış Yap
         </v-tooltip>
       </v-list-item>
@@ -100,9 +118,9 @@ const sidebarStyles = computed(() => ({
 }))
 
 const navigationItems = computed<NavigationItem[]>(() => [
-  { 
-    title: 'Anasayfa', 
-    icon: 'mdi-view-dashboard-outline', 
+  {
+    title: 'Anasayfa',
+    icon: 'mdi-view-dashboard-outline',
     value: 'dashboard',
     route: '/'
   },
@@ -112,27 +130,27 @@ const navigationItems = computed<NavigationItem[]>(() => [
     value: 'customers',
     route: '/customers'
   },
-  { 
-    title: 'Raporlar', 
-    icon: 'mdi-chart-bar', 
+  {
+    title: 'Raporlar',
+    icon: 'mdi-chart-bar',
     value: 'reports',
     route: '/reports'
   },
-  { 
-    title: 'Mesajlar', 
-    icon: 'mdi-message-processing-outline', 
+  {
+    title: 'Mesajlar',
+    icon: 'mdi-message-processing-outline',
     value: 'messages',
     route: '/messages'
   },
-  { 
-    title: 'Belgeler', 
-    icon: 'mdi-file-document-outline', 
+  {
+    title: 'Belgeler',
+    icon: 'mdi-file-document-outline',
     value: 'documents',
     route: '/documents'
   },
-  { 
-    title: 'Takım', 
-    icon: 'mdi-account-group-outline', 
+  {
+    title: 'Takım',
+    icon: 'mdi-account-group-outline',
     value: 'team',
     route: '/team'
   }
@@ -146,11 +164,11 @@ const toggleDrawer = () => {
 const handleNavigation = (value: string) => {
   selectedItem.value = value
   const item = navigationItems.value.find(nav => nav.value === value)
-  
+
   if (item?.route) {
     router.push(item.route)
   }
-  
+
   // Mobile'da navigation sonrası drawer'ı kapat
   if (window.innerWidth < BREAKPOINT_MD) {
     drawer.value = false
@@ -173,7 +191,7 @@ const handleResize = () => {
 onMounted(() => {
   // Initial drawer state based on screen size
   drawer.value = window.innerWidth >= BREAKPOINT_MD
-  
+
   // Add resize listener
   window.addEventListener('resize', handleResize)
 })
@@ -219,7 +237,7 @@ defineExpose({
   .v-navigation-drawer {
     transform: translateX(-100%);
   }
-  
+
   .v-navigation-drawer.v-navigation-drawer--temporary {
     transform: translateX(0);
   }
@@ -234,15 +252,16 @@ defineExpose({
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
+
   .v-list-item,
   .v-btn {
     transition: none !important;
   }
-  
+
   .v-list-item:hover {
     transform: none;
   }
-  
+
   .v-list-item:first-child:hover .v-icon {
     transform: none;
   }

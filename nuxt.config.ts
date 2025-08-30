@@ -1,35 +1,31 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import tailwindcss from "@tailwindcss/vite"
-import vuetify from "vite-plugin-vuetify"
+import tailwindcss from "@tailwindcss/vite";
+import vuetify from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
   modules: [
-    '@nuxt/eslint',
-    '@nuxt/fonts',
-    '@nuxt/icon',
-    '@nuxt/image',
-    '@nuxt/scripts'
+    "@nuxt/eslint",
+    "@nuxt/fonts",
+    "@nuxt/icon",
+    "@nuxt/image",
+    "@nuxt/scripts",
   ],
-  
+
   css: [
-     // Vuetify sonra yüklenmeli
-    'vuetify/styles',
     // Tailwind CSS önce yüklenmeli
-    '~/assets/css/main.css',
-   
+    "~/assets/css/custom.css",
+    // Vuetify sonra yüklenmeli
+    "vuetify/styles",
   ],
-  
+
   build: {
-    transpile: ['vuetify']
+    transpile: ["vuetify"],
   },
-  
+
   vite: {
-    plugins: [
-      tailwindcss(),
-      vuetify({ autoImport: true })
-    ],
-  }
-})
+    plugins: [tailwindcss(), vuetify({ autoImport: true })],
+  },
+});
