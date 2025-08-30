@@ -60,7 +60,7 @@ export default defineNuxtConfig({
     }
   },
 
-  // Performance optimization
+  // Error handling
   experimental: {
     payloadExtraction: false
   },
@@ -68,6 +68,8 @@ export default defineNuxtConfig({
   // Nitro optimization
   nitro: {
     compressPublicAssets: true,
-    minify: true
+    minify: true,
+    // Error handling
+    errorHandler: '~/server/errorHandler.ts'
   }
 });
