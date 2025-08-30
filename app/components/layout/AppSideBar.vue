@@ -117,6 +117,18 @@ const navigationItems = computed<NavigationItem[]>(() => [
     route: "/customers",
   },
   {
+    title: "Deneme",
+    icon: "mdi-flask-outline",
+    value: "deneme",
+    route: "/deneme",
+  },
+  {
+    title: "Debug",
+    icon: "mdi-bug-outline",
+    value: "debug",
+    route: "/debug",
+  },
+  {
     title: "Raporlar",
     icon: "mdi-chart-bar",
     value: "reports",
