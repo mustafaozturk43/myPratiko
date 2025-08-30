@@ -8,7 +8,7 @@
     :permanent="$vuetify.display.mdAndUp"
     :temporary="$vuetify.display.smAndDown"
     floating
-    class="sidebar-custom tw:border-none tw:shadow-2xl tw:rounded-xl tw:bg-gradient-to-b tw:from-indigo-900 tw:to-indigo-800"
+    class="sidebar-custom tw:border-none tw:shadow-2xl tw:rounded-xl tw:bg-sky-200!"
     width="80"
     :style="{
       top: '80px',
@@ -184,7 +184,7 @@ defineExpose({
 /* Sidebar container override */
 .sidebar-custom {
   border: none !important;
-  background: linear-gradient(to bottom, #312e81, #3730a3) !important;
+  /* background: linear-gradient(to bottom, #312e81, #3730a3) !important;*/
 }
 
 /* Navigation item base styles - Tailwind ile override edilemeyenler */
