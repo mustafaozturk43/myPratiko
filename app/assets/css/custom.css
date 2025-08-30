@@ -1,5 +1,18 @@
+/* stylelint-disable */
+/* csslint-disable */
+/* eslint-disable */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
-@import "tailwindcss";
+@import "tailwindcss" prefix(tw);
+
+
+
+@theme {
+  --color-brand: #1d4ed8;
+  --color-pastel-blue: #A7C7E7;
+  --color-pastel-green: #C1E1C1;
+  --color-pastel-pink: #F8C8DC;
+  --color-pastel-yellow: #FDFD96;
+}
 
 /* @import "tailwindcss/preflight";
 @import "tailwindcss/utilities"; */

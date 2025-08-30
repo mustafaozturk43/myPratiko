@@ -9,17 +9,15 @@
       <v-main>
         <v-container>
           <v-sheet
-            :elevation="5"
+            :elevation="1"
             border
             color="red-600"
             rounded
             class="pa-6"
-          >
-
-          </v-sheet>
+          />
         </v-container>
       </v-main>
-      <LayoutAppFooter />
+      <!-- <LayoutAppFooter /> -->
       <!-- Footer -->
     </v-layout>
   </v-app>

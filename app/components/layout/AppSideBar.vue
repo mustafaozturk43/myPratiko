@@ -1,14 +1,20 @@
 <template>
-  <div class="tw:bg-orange-200 tw:bg-orange-900">deneme
-  </div>
-
   <v-navigation-drawer
     v-model="drawer"
     :permanent="$vuetify.display.mdAndUp"
     :temporary="$vuetify.display.smAndDown"
     floating
-    class="bg-[#001e42] text-white w-56 shadow-xl"
+    elevation="4"
+    class="tw:bg-sky-400! tw:text-white tw:shadow-2xl tw:rounded-lg"
     width="80"
+    :style="{
+      top: '75px',
+      bottom: '75px',
+      left: $vuetify.display.mdAndUp ? '10px' : '0px',
+      height: 'calc(100vh - 170px)',
+      position: 'fixed',
+      zIndex: 1000,
+    }"
   >
     <v-list
       v-model="selectedItem"
@@ -20,11 +26,7 @@
     >
       <!-- Logo -->
       <v-list-item class="tw:mb-4">
-        <v-icon
-          size="x-large"
-          color="white"
-          class="tw:mx-auto"
-        >
+        <v-icon size="x-large" color="white" class="tw:mx-auto">
           mdi-alpha-p-box
         </v-icon>
       </v-list-item>
@@ -38,15 +40,8 @@
         active-class="nav-item-active"
         @click="handleNavigation(item.value)"
       >
-        <v-icon
-          :icon="item.icon"
-          size="x-large"
-          class="tw:mx-auto"
-        />
-        <v-tooltip
-          activator="parent"
-          location="end"
-        >
+        <v-icon :icon="item.icon" size="x-large" class="tw:mx-auto" />
+        <v-tooltip activator="parent" location="end">
           {{ item.title }}
         </v-tooltip>
       </v-list-item>
@@ -59,16 +54,8 @@
         value="logout"
         @click="handleLogout"
       >
-        <v-icon
-          icon="mdi-logout"
-          size="large"
-        />
-        <v-tooltip
-          activator="parent"
-          location="end"
-        >
-          Çıkış Yap
-        </v-tooltip>
+        <v-icon icon="mdi-logout" size="large" />
+        <v-tooltip activator="parent" location="end"> Çıkış Yap </v-tooltip>
       </v-list-item>
     </v-list>
   </v-navigation-drawer>
@@ -85,126 +72,125 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useRouter } from "vue-router";
 
 // Types
 interface NavigationItem {
-  title: string
-  icon: string
-  value: string
-  route?: string
+  title: string;
+  icon: string;
+  value: string;
+  route?: string;
 }
 
 // Composables
-const router = useRouter()
+const router = useRouter();
 
 // Reactive State
-const drawer = ref(false)
-const selectedItem = ref('dashboard')
+const drawer = ref(false);
+const selectedItem = ref("dashboard");
 
 // Constants
-const BREAKPOINT_MD = 960
+const BREAKPOINT_MD = 960;
 
 // Computed Properties
-const sidebarStyles = computed(() => ({
-
-  top: '80px',
-  bottom: '70px',
-  left: '10px',
-  height: 'calc(100vh - 180px)',
-  position: 'fixed' as const,
-  zIndex: 1000
-}))
+// const sidebarStyles = computed(() => ({
+//   top: '80px',
+//   bottom: '70px',
+//   left: '10px',
+//   height: 'calc(100vh - 180px)',
+//   position: 'fixed' as const,
+//   zIndex: 1000
+// }))
 
 const navigationItems = computed<NavigationItem[]>(() => [
   {
-    title: 'Anasayfa',
-    icon: 'mdi-view-dashboard-outline',
-    value: 'dashboard',
-    route: '/'
+    title: "Anasayfa",
+    icon: "mdi-view-dashboard-outline",
+    value: "dashboard",
+    route: "/",
   },
   {
-    title: 'Müşteriler',
-    icon: 'mdi-account-group-outline',
-    value: 'customers',
-    route: '/customers'
+    title: "Müşteriler",
+    icon: "mdi-account-group-outline",
+    value: "customers",
+    route: "/customers",
   },
   {
-    title: 'Raporlar',
-    icon: 'mdi-chart-bar',
-    value: 'reports',
-    route: '/reports'
+    title: "Raporlar",
+    icon: "mdi-chart-bar",
+    value: "reports",
+    route: "/reports",
   },
   {
-    title: 'Mesajlar',
-    icon: 'mdi-message-processing-outline',
-    value: 'messages',
-    route: '/messages'
+    title: "Mesajlar",
+    icon: "mdi-message-processing-outline",
+    value: "messages",
+    route: "/messages",
   },
   {
-    title: 'Belgeler',
-    icon: 'mdi-file-document-outline',
-    value: 'documents',
-    route: '/documents'
+    title: "Belgeler",
+    icon: "mdi-file-document-outline",
+    value: "documents",
+    route: "/documents",
   },
   {
-    title: 'Takım',
-    icon: 'mdi-account-group-outline',
-    value: 'team',
-    route: '/team'
-  }
-])
+    title: "Takım",
+    icon: "mdi-account-group-outline",
+    value: "team",
+    route: "/team",
+  },
+]);
 
 // Methods
 const toggleDrawer = () => {
-  drawer.value = !drawer.value
-}
+  drawer.value = !drawer.value;
+};
 
 const handleNavigation = (value: string) => {
-  selectedItem.value = value
-  const item = navigationItems.value.find(nav => nav.value === value)
+  selectedItem.value = value;
+  const item = navigationItems.value.find((nav) => nav.value === value);
 
   if (item?.route) {
-    router.push(item.route)
+    router.push(item.route);
   }
 
   // Mobile'da navigation sonrası drawer'ı kapat
   if (window.innerWidth < BREAKPOINT_MD) {
-    drawer.value = false
+    drawer.value = false;
   }
-}
+};
 
 const handleLogout = () => {
   // Logout logic burada implement edilecek
-  console.log('Logout clicked')
-}
+  console.log("Logout clicked");
+};
 
 const handleResize = () => {
-  const shouldOpen = window.innerWidth >= BREAKPOINT_MD
+  const shouldOpen = window.innerWidth >= BREAKPOINT_MD;
   if (drawer.value !== shouldOpen) {
-    drawer.value = shouldOpen
+    drawer.value = shouldOpen;
   }
-}
+};
 
 // Lifecycle
 onMounted(() => {
   // Initial drawer state based on screen size
-  drawer.value = window.innerWidth >= BREAKPOINT_MD
+  drawer.value = window.innerWidth >= BREAKPOINT_MD;
 
   // Add resize listener
-  window.addEventListener('resize', handleResize)
-})
+  window.addEventListener("resize", handleResize);
+});
 
 onUnmounted(() => {
   // Cleanup resize listener
-  window.removeEventListener('resize', handleResize)
-})
+  window.removeEventListener("resize", handleResize);
+});
 
 // Expose methods to parent
 defineExpose({
-  toggleDrawer
-})
+  toggleDrawer,
+});
 </script>
 
 <style scoped>
@@ -252,7 +238,6 @@ defineExpose({
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
-
   .v-list-item,
   .v-btn {
     transition: none !important;
