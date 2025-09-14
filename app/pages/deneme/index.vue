@@ -31,8 +31,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-
 // Page metadata for Nuxt 4
 definePageMeta({
     title: "Deneme Sayfası",
