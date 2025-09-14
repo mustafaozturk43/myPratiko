@@ -1,0 +1,100 @@
+# 🧩 Genel Kurallar
+- Cevaplar Türkçe anlamlı olsun
+## Sürüm Uyumluluğu
+- Kod yalnızca belirtilen sürümlere göre yazılmalı
+- Cursor AI başka sürüm önermemeli
+- Clean Code ve SOLID yasısına uygun olsun
+- Tüm sınıf,fonsiyon ve değişken isimleri kebap-case standardında olsun
+- Dosya isimleri ise CamelCase standardında olsun
+
+## Temiz Kodlama
+- Fonksiyonlar tek amaçlı ve kısa tutulmalı
+- Gereksiz import yapılmamalı
+- Lazy-load / dynamic import kullanılmalı
+
+## Performans & Bellek Kullanımı
+- Yalnızca ihtiyaç duyulan bileşenler çağrılmalı
+- UI akıcı ve mobil uyumlu olmalı
+
+# 🌐 Nuxt (v4.0.3)
+
+## Proje Yapısı
+- Proje yapısı `pages/`, `layouts/`, `components/` dizinlerinde tutulmalı
+- Vue Composition API kullanılmalı
+- `useNuxtApp()` üzerinden global değerler alınmalı
+
+## Örnek Kullanım
+```vue
+<script setup>
+// Nuxt 4.0.3 uyumlu
+const { $config } = useNuxtApp()
+</script>
+```
+
+# 🎨 Vuetify (v3.9.6)
+
+## Tema ve Konfigürasyon
+- Tema tanımları `createVuetify()` fonksiyonu ile yapılmalı
+- Grid sistemi Vuetify sınıflarıyla yönetilmeli
+- Tailwind ile karışmayan UI düzenlemelerinde hibrit kullanım yapılabilir
+
+## Örnek Konfigürasyon
+```typescript
+// Vuetify 3.9.6 kullan
+import { createVuetify } from 'vuetify'
+
+export default createVuetify({
+  theme: {
+    defaultTheme: 'light',
+    themes: {
+      light: {
+        colors: { primary: '#1976D2' }
+      }
+    }
+  }
+})
+```
+
+# 🎯 Tailwind CSS (v4.1.x)
+
+## CSS-First Konfigürasyon
+- CSS-first konfigürasyon kullanılmalı (`@theme`, `@config`)
+- Utility-first yaklaşım tercih edilmeli
+- Sık kullanılan stiller için `@apply` kullanılmalı
+- Tailwind 4.1’den itibaren tailwind.config.js dosyası zorunlu değil. Bunun yerine CSS içinde şöyle tanımlayabilirsin
+## Örnek Stil Tanımları
+```css
+/* Tailwind 4.1.x uyumlu */
+@theme {
+  --color-brand: #1d4ed8;
+}
+
+.btn {
+  @apply px-4 py-2 rounded-lg bg-[--color-brand] text-white;
+}
+```
+
+# 🤖 Cursor AI İçin Özel Talimatlar
+
+## Kod Önerileri
+- Kod önerileri her zaman belirtilen sürümlere uygun olmalı
+- Önerilen kod bloklarına sürüm uyumluluğu eklenmeli
+
+## Örnek Yorum Formatı
+```javascript
+// Nuxt 4.0.3 uyumlu
+// Vuetify 3.9.6 kullan
+// Tailwind 4.1.x uyumlu
+```
+
+## Öncelikler
+- Kod okunabilirliği, performans ve UX öncelikli olmalı
+
+# ✅ Sonuç
+
+Bu kurallar, projelerde temiz kod, sürüm uyumluluğu ve yüksek performans sağlamayı amaçlar. Cursor AI, bu dosyayı referans alarak önerilerde bulunmalıdır.
+
+globs:
+alwaysApply: false
+---
+

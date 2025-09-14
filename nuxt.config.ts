@@ -4,26 +4,72 @@ import vuetify from "vite-plugin-vuetify";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   modules: [
-    "@nuxt/eslint",
+    "@nuxt/scripts",
     "@nuxt/fonts",
     "@nuxt/icon",
     "@nuxt/image",
-    "@nuxt/scripts",
+    "@nuxt/eslint",
   ],
 
+  // Explicit routing configuration
+  router: {
+    options: {
+      strict: false
+    }
+  },
+
+  // Page configuration
+  pages: true,
+
+  // App configuration
+  app: {
+    head: {
+      title: 'Pratiko ERP',
+      titleTemplate: '%s - Pratiko ERP'
+    }
+  },
+
+  // CSS optimization
   css: [
-    'vuetify/styles',
-    '~/assets/css/main.css'
+    // Critical CSS first
+    "~/assets/css/custom.css",
+    // Vuetify with optimization
+    "vuetify/styles",
   ],
 
+  // Build optimization
   build: {
     transpile: ["vuetify"],
   },
 
+  // Vite optimization
   vite: {
     plugins: [tailwindcss(), vuetify({ autoImport: true })],
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@import "vuetify/styles";'
+        }
+      }
+    },
+    optimizeDeps: {
+      include: ['vuetify', 'vuetify/components', 'vuetify/directives']
+    }
   },
+
+  // Error handling
+  experimental: {
+    payloadExtraction: false
+  },
+
+  // Nitro optimization
+  nitro: {
+    compressPublicAssets: true,
+    minify: true,
+    // Error handling
+    errorHandler: '~/server/errorHandler.ts'
+  }
 });

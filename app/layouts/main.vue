@@ -4,33 +4,21 @@
       <!-- Header -->
       <LayoutAppHeader />
       <!-- Sidebar -->
-      <LayoutAppSideBar ref="sidebarRef" />
       <!-- Main content area -->
       <v-main>
-        <v-container>
-          <v-sheet 
-            :elevation="1" 
-            border 
-            color="red-600" 
-            rounded 
-            class="pa-6"
-          >
-            <slot/>
-          </v-sheet>
-        </v-container>
+            <slot />
       </v-main>
-      <!-- <LayoutAppFooter /> -->
+      <LayoutAppFooter />
       <!-- Footer -->
     </v-layout>
   </v-app>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import {  onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 // Sidebar reference for programmatic control
-const sidebarRef = ref(null);
 const route = useRoute();
 
 // Update page title based on route
@@ -40,10 +28,6 @@ onMounted(() => {
   }
 });
 
-// Expose sidebar methods for parent components if needed
-defineExpose({
-  toggleSidebar: () => sidebarRef.value?.toggleDrawer?.(),
-});
 </script>
 
 <style scoped>
